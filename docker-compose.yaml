@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+    mqtt:
+        container_name: mqtt
+        image: eclipse-mosquitto:2.0.14
+        restart: always
+        volumes:
+            - ./config:/mosquitto/config
+            - ./data:/mosquitto/data
+            - ./log:/mosquitto/log
+        ports:
+            - 1883:1883
+            - 9001:9001
+
+# sudo docker exec -it mqtt mosquitto_passwd -U /mosquitto/config/pwfile
+# sudo docker restart mqtt
